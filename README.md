@@ -36,6 +36,8 @@ DATA IS COLLECTED FROM THE NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION SPACE
 
 ACE/SWEPAM (1h)
 
+<img src="Screen-4.jpg"><br/>
+
 ESTIMATED KP INDEX (7 days)
 
 DST INDEX (7 days)
@@ -44,12 +46,16 @@ DST INDEX (7 days)
 
 HEMISPHERIC POWER
 
+<img src="Screen-1.jpg"><br/>
+
 GOES MAGNETOMETERS (1-minute data, 7 days timespan)</br>
 https://www.swpc.noaa.gov/products/goes-magnetometer</br>
 Historically, the data have been presented in the E (earthward), P (parallel) and N (normal) coordinate system where:
 Hp:  magnetic field vector component, points northward, perpendicular to the orbit plane which for a zero degree inclination orbit is parallel to Earth's spin axis.
 He:  magnetic field vector component, perpendicular to Hp and Hn and points earthward.
 Hn:  magnetic field vector component, perpendicular to Hp and He and points eastward.
+
+<img src="Screen-5.jpg"><br/>
 
 WSA-ENLIL SOLAR WIND PREDICTION</br>
 https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
