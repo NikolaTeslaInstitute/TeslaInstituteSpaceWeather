@@ -8,11 +8,11 @@ SPACE WEATHER STATION SYSTEM
 3) WINDOWS FORMS ALERT - MONO SUITED VERSION OF DESKTOP APPLICATION
 4) CONSOLE PROGRAM IS INTENDED TO BE RUN ON RASPBERRY PI TERMINAL 24/7 WITH THE USE OF MONO
 
-PREREQUISITES INSTALLATION : 
-	sudo apt install mono-complete
-INSTALLATION FAQ FOR MONO : https://pimylifeup.com/raspberry-pi-mono-framework/
-	sudo apt install postgresql
-INSTALLATION FAQ FOR POSTGRESQL : https://pimylifeup.com/raspberry-pi-postgresql/
+PREREQUISITES INSTALLATION : </br>
+	sudo apt install mono-complete</br>
+INSTALLATION FAQ FOR MONO : https://pimylifeup.com/raspberry-pi-mono-framework/</br>
+	sudo apt install postgresql</br>
+INSTALLATION FAQ FOR POSTGRESQL : https://pimylifeup.com/raspberry-pi-postgresql/</br>
 
 TWO SIMULTANEOUS TASKS FOR RETREIVING NOAA DATA AND ALERTING USERS
 1) LOOPING EVERY 60 SECONDS WITH DATA RETREIVAL
