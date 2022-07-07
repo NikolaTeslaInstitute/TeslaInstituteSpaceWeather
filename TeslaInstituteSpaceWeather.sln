@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaInstituteSpaceWeather", "TeslaInstituteSpaceWeather.csproj", "{854F5125-CBDE-4937-B58E-7B302764A5DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaInstituteSpaceWeather.WPF", "TeslaInstituteSpaceWeather.WPF\TeslaInstituteSpaceWeather.WPF.csproj", "{0647FD6E-409F-4E94-A249-E284667D32F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeslaInstituteSpaceWeatherAlerts", "TeslaInstituteSpaceWeatherAlerts\TeslaInstituteSpaceWeatherAlerts.csproj", "{DC0D01B7-4CA9-4CF6-B912-F96FBEA1E628}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeslaInstituteSpaceWeatherConsole", "TeslaInstituteSpaceWeatherConsole\TeslaInstituteSpaceWeatherConsole.csproj", "{D9DED15B-B838-490C-B192-862B0DA8015B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{854F5125-CBDE-4937-B58E-7B302764A5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854F5125-CBDE-4937-B58E-7B302764A5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854F5125-CBDE-4937-B58E-7B302764A5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854F5125-CBDE-4937-B58E-7B302764A5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0647FD6E-409F-4E94-A249-E284667D32F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0647FD6E-409F-4E94-A249-E284667D32F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0647FD6E-409F-4E94-A249-E284667D32F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0647FD6E-409F-4E94-A249-E284667D32F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0D01B7-4CA9-4CF6-B912-F96FBEA1E628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0D01B7-4CA9-4CF6-B912-F96FBEA1E628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0D01B7-4CA9-4CF6-B912-F96FBEA1E628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0D01B7-4CA9-4CF6-B912-F96FBEA1E628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9DED15B-B838-490C-B192-862B0DA8015B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DED15B-B838-490C-B192-862B0DA8015B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DED15B-B838-490C-B192-862B0DA8015B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DED15B-B838-490C-B192-862B0DA8015B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3820ECE6-DAE4-426B-952B-4B09AF7ACB15}
+	EndGlobalSection
+EndGlobal
