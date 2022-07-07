@@ -78,8 +78,8 @@ namespace TeslaInstituteSpaceWeather.WPF
 
         // ------------------------------------------------------------------------------------------------------
         
-        string jsonpath = @"f:\MQTeslaSimulation\TeslaInstituteSpaceWeather\json\";
-        string graphPath = @"f:\MQTeslaSimulation\TeslaInstituteSpaceWeather\graph\";
+        string jsonpath = @"d:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\json\";
+        string graphPath = @"d:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\graph\";
 
         // ------------------------------------------------------------------------------------------------------
 
