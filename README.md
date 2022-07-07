@@ -40,6 +40,8 @@ ESTIMATED KP INDEX (7 days)
 
 DST INDEX (7 days)
 
+<img src="Screen-3.jpg"><br/>
+
 HEMISPHERIC POWER
 
 GOES MAGNETOMETERS (1-minute data, 7 days timespan)</br>
@@ -54,6 +56,9 @@ https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
 
 AURORA OVATION</br>
 https://services.swpc.noaa.gov/json/ovation_aurora_latest.json</br>
+
+<img src="Screen-7.jpg"><br/>
+<img src="Screen-8.jpg"><br/>
 
 POSTGRESSQL IS USED FOR RASPBERRY PI </br>
 SQL CREATION SCRIPTS ARE PORVIDED OR</br>
