@@ -42,26 +42,26 @@ DST INDEX (7 days)
 
 HEMISPHERIC POWER
 
-GOES MAGNETOMETERS (1-minute data, 7 days timespan)
-https://www.swpc.noaa.gov/products/goes-magnetometer
+GOES MAGNETOMETERS (1-minute data, 7 days timespan)</br>
+https://www.swpc.noaa.gov/products/goes-magnetometer</br>
 Historically, the data have been presented in the E (earthward), P (parallel) and N (normal) coordinate system where:
 Hp:  magnetic field vector component, points northward, perpendicular to the orbit plane which for a zero degree inclination orbit is parallel to Earth's spin axis.
 He:  magnetic field vector component, perpendicular to Hp and Hn and points earthward.
 Hn:  magnetic field vector component, perpendicular to Hp and He and points eastward.
 
-WSA-ENLIL SOLAR WIND PREDICTION
-https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction
+WSA-ENLIL SOLAR WIND PREDICTION</br>
+https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
 
-AURORA OVATION
-https://services.swpc.noaa.gov/json/ovation_aurora_latest.json
+AURORA OVATION</br>
+https://services.swpc.noaa.gov/json/ovation_aurora_latest.json</br>
 
-POSTGRESSQL IS USED FOR RASPBERRY PI 
-SQL CREATION SCRIPTS ARE PORVIDED OR
-BACKUP RESTORE OF ONE OF OUR DATABASE BACKUPS
+POSTGRESSQL IS USED FOR RASPBERRY PI </br>
+SQL CREATION SCRIPTS ARE PORVIDED OR</br>
+BACKUP RESTORE OF ONE OF OUR DATABASE BACKUPS</br>
 
-CREATION OF TELEGRAM GROUP AND TELEGRAM BOT FOR DST INDEX ALERT AND GRAPHIC DISPLAY
-TELEGRAM BOT API IS USED https://github.com/TelegramBots/Telegram.Bot
-TELGRAM BOT SETUP FAQ https://creativeminds.helpscoutdocs.com/article/2829-telegram-bot-use-case-how-to-create-a-bot-on-telegram-that-responds-to-group-messages
+CREATION OF TELEGRAM GROUP AND TELEGRAM BOT FOR DST INDEX ALERT AND GRAPHIC DISPLAY</br>
+TELEGRAM BOT API IS USED https://github.com/TelegramBots/Telegram.Bot</br>
+TELGRAM BOT SETUP FAQ https://creativeminds.helpscoutdocs.com/article/2829-telegram-bot-use-case-how-to-create-a-bot-on-telegram-that-responds-to-group-messages</br>
 
-HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS
-https://developers.arcgis.com/net/
+HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS</br>
+https://developers.arcgis.com/net/</br>
