@@ -87,7 +87,7 @@ namespace TeslaInstituteSpaceWeather.WPF
         {
             InitializeComponent();
 
-            Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = "AAPKef26365d5b4f467fab0206972c104b2aYcKt6yitQeP5pr-5MqYh3Ev2e9iHJiPqgs9zsJjlWkC2FC6pjzpcXzamlhNsIfcd";
+            Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = "YOUR ESRI DEVELOPER API KEY HERE";
 
             // Set up the basemap.
             MySceneView.Scene = new Scene(BasemapStyle.ArcGISImagery);
