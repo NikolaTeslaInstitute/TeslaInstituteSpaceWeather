@@ -100,6 +100,9 @@ using Telegram.Bot;
  * TELEGRAM BOT API IS USED https://github.com/TelegramBots/Telegram.Bot
  * TELGRAM BOT SETUP FAQ https://creativeminds.helpscoutdocs.com/article/2829-telegram-bot-use-case-how-to-create-a-bot-on-telegram-that-responds-to-group-messages
  * 
+ * HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS
+ * https://developers.arcgis.com/net/
+ * 
  */
 
 namespace TeslaInstituteSpaceWeatherConsole
@@ -497,12 +500,20 @@ namespace TeslaInstituteSpaceWeatherConsole
         private async void jsonProcessAlerts(string url)
         {
             log("PROCESS : " + url);
-            string jsonresult = await DownloadPage(url, downloadAlertJSON);
 
-            if (jsonresult !="") {
-                AlertsOutput = JsonConvert.DeserializeObject<List<Alerts>>(jsonresult);
-            }  // end if
+            try
+            {
+                string jsonresult = await DownloadPage(url, downloadAlertJSON);
 
+                if (jsonresult != "")
+                {
+                    AlertsOutput = JsonConvert.DeserializeObject<List<Alerts>>(jsonresult);
+                }  // end if
+            }
+            catch (Exception err)
+            {
+                log("ERROR : " + err.StackTrace);
+            }
             //textBox4.Text = PlanetaryKIndexOutput;
         } // end jsonProcessAlerts
 
@@ -513,12 +524,19 @@ namespace TeslaInstituteSpaceWeatherConsole
         {
             log("PROCESS : " + url);
 
-            string jsonresult = await DownloadPage(url, downloadAlertJSON);
+            try { 
 
-            if (jsonresult != "")
+                string jsonresult = await DownloadPage(url, downloadAlertJSON);
+
+                if (jsonresult != "")
+                {
+                    PlanetaryKIndexOutput = JsonConvert.DeserializeObject<List<PlanetaryKIndex>>(jsonresult);
+                } // end if
+                }
+            catch (Exception err)
             {
-                PlanetaryKIndexOutput = JsonConvert.DeserializeObject<List<PlanetaryKIndex>>(jsonresult);
-            } // end if
+                log("ERROR : " + err.StackTrace);
+            }
 
             //textBox4.Text = PlanetaryKIndexOutput;
         } // end jsonProcessPlanetaryKIndex
@@ -530,17 +548,24 @@ namespace TeslaInstituteSpaceWeatherConsole
         {
             log("PROCESS : " + url);
 
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.Converters.Add(new KP1EstConverter());
-            settings.Formatting = Formatting.Indented;
 
-            string jsonresult = await DownloadPage(url, downloadAlertJSON);
-
-            if (jsonresult != "")
+            try
             {
-                PredEstKp1hOutput = JsonConvert.DeserializeObject<List<KP1hEst>>(jsonresult, settings);
-            } // end if
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.Converters.Add(new KP1EstConverter());
+                settings.Formatting = Formatting.Indented;
 
+                string jsonresult = await DownloadPage(url, downloadAlertJSON);
+
+                if (jsonresult != "")
+                {
+                    PredEstKp1hOutput = JsonConvert.DeserializeObject<List<KP1hEst>>(jsonresult, settings);
+                } // end if
+            }
+            catch (Exception err)
+            {
+                log("ERROR : " + err.StackTrace);
+            }
             //textBox4.Text = PlanetaryKIndexOutput;
         } // end jsonProcessPredEstKp1h
 
@@ -551,13 +576,19 @@ namespace TeslaInstituteSpaceWeatherConsole
         {
             log("PROCESS : " + url);
 
-            string jsonresult = await DownloadPage(url, downloadAlertJSON);
-
-            if (jsonresult != "")
+            try
             {
-                Dst1hOutput = JsonConvert.DeserializeObject<List<GeospaceDst>>(jsonresult);
-            } // end if
 
+                string jsonresult = await DownloadPage(url, downloadAlertJSON);
+
+                if (jsonresult != "")
+                {
+                    Dst1hOutput = JsonConvert.DeserializeObject<List<GeospaceDst>>(jsonresult);
+                } // end if
+            } catch (Exception err)
+			{
+                log("ERROR : " + err.StackTrace);
+			}
             //textBox4.Text = PlanetaryKIndexOutput;
         } // end jsonProcessPlanetaryKIndex
 
