@@ -36,17 +36,17 @@ DATA IS COLLECTED FROM THE NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION SPACE
 
 ACE/SWEPAM (1h)
 
-<img src="Screen-4.jpg"><br/>
+<img src="screen/Screen-4.jpg"><br/>
 
 ESTIMATED KP INDEX (7 days)
 
 DST INDEX (7 days)
 
-<img src="Screen-3.jpg"><br/>
+<img src="screen/Screen-3.jpg"><br/>
 
 HEMISPHERIC POWER
 
-<img src="Screen-1.jpg"><br/>
+<img src="screen/Screen-1.jpg"><br/>
 
 GOES MAGNETOMETERS (1-minute data, 7 days timespan)</br>
 https://www.swpc.noaa.gov/products/goes-magnetometer</br>
@@ -55,7 +55,7 @@ Hp:  magnetic field vector component, points northward, perpendicular to the orb
 He:  magnetic field vector component, perpendicular to Hp and Hn and points earthward.
 Hn:  magnetic field vector component, perpendicular to Hp and He and points eastward.
 
-<img src="Screen-5.jpg"><br/>
+<img src="screen/Screen-5.jpg"><br/>
 
 WSA-ENLIL SOLAR WIND PREDICTION</br>
 https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
@@ -63,8 +63,8 @@ https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
 AURORA OVATION</br>
 https://services.swpc.noaa.gov/json/ovation_aurora_latest.json</br>
 
-<img src="Screen-6.jpg"><br/>
-<img src="Screen-7.jpg"><br/>
+<img src="screen/Screen-6.jpg"><br/>
+<img src="screen/Screen-7.jpg"><br/>
 
 POSTGRESSQL IS USED FOR RASPBERRY PI </br>
 SQL CREATION SCRIPTS ARE PORVIDED OR</br>
@@ -73,6 +73,10 @@ BACKUP RESTORE OF ONE OF OUR DATABASE BACKUPS</br>
 CREATION OF TELEGRAM GROUP AND TELEGRAM BOT FOR DST INDEX ALERT AND GRAPHIC DISPLAY</br>
 TELEGRAM BOT API IS USED https://github.com/TelegramBots/Telegram.Bot</br>
 TELGRAM BOT SETUP FAQ https://creativeminds.helpscoutdocs.com/article/2829-telegram-bot-use-case-how-to-create-a-bot-on-telegram-that-responds-to-group-messages</br>
+
+<img src="telegram/Screenshot_20220708-105439_Telegram.jpg" width="250">
+<img src="telegram/Screenshot_20220708-055020_Telegram.jpg" width="250">
+<img src="telegram/Screenshot_20220707-210101_Telegram.jpg" width="250"><br/>
 
 HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS</br>
 https://developers.arcgis.com/net/</br>
