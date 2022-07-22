@@ -63,6 +63,9 @@ https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
 AURORA OVATION</br>
 https://services.swpc.noaa.gov/json/ovation_aurora_latest.json</br>
 
+HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS</br>
+https://developers.arcgis.com/net/</br>
+
 <img src="screen/Screen-6.jpg"><br/>
 <img src="screen/Screen-7.jpg"><br/>
 
@@ -75,6 +78,3 @@ TELEGRAM BOT API IS USED https://github.com/TelegramBots/Telegram.Bot</br>
 TELGRAM BOT SETUP FAQ https://creativeminds.helpscoutdocs.com/article/2829-telegram-bot-use-case-how-to-create-a-bot-on-telegram-that-responds-to-group-messages</br>
 
 <img src="telegram/Screenshot_20220708-105439_Telegram.jpg" width="250">&nbsp;<img src="telegram/Screenshot_20220708-055020_Telegram.jpg" width="250">&nbsp;<img src="telegram/Screenshot_20220707-210101_Telegram.jpg" width="250"><br/>
-
-HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS</br>
-https://developers.arcgis.com/net/</br>
