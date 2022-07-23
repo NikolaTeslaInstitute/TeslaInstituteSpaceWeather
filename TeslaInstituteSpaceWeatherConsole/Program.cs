@@ -140,8 +140,8 @@ namespace TeslaInstituteSpaceWeatherConsole
             //    ThreadPool.QueueUserWorkItem(o => prog.RefreshDatabase(null));
 
             // http://t.me/NikolaTeslaInstituteBot
-            string telegramToken = "5527008152:AAFlZsUmpoSyOL2e3i25zcw0dXsnMvW2vEc";
-            string telegramChatID = "-635544394";
+            string telegramToken = "<YOUR TELEGRAM TOKEN HERE>";
+            string telegramChatID = "<YOUR TELEGRAM CHAT ID HERE>";
 
             while (true)
 			{
