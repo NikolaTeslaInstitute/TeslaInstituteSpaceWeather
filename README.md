@@ -57,14 +57,23 @@ Hn:  magnetic field vector component, perpendicular to Hp and He and points east
 
 <img src="screen/Screen-5.jpg"><br/>
 
+<hr/>
+
 WSA-ENLIL SOLAR WIND PREDICTION</br>
 https://www.swpc.noaa.gov/products/wsa-enlil-solar-wind-prediction</br>
+
+<hr/>
 
 AURORA OVATION</br>
 https://services.swpc.noaa.gov/json/ovation_aurora_latest.json</br>
 
 HOW-TO SETUP OF ESRI ARCGIS DEVELOPER ACCOUNT TO USE WITH AURORA OVAL GIS</br>
 https://developers.arcgis.com/net/</br>
+
+<img src="screen/Screen-6.jpg"><br/>
+<img src="screen/Screen-7.jpg"><br/>
+
+<hr/>
 
 NASA DONKI API is utilized to display data table of CMEs from start to end date.</br>
 Head over to https://api.NASA.gov to applying for an API key sent you your email</br>
@@ -81,9 +90,6 @@ DONKI Goals:</br>
 One-stop on-line tool for space weather researchers and forecasters.</br>
 Gathers and organizes space weather scientists interpretations and daily activities with correlations and direct links between relevant space weather observations.</br>
 Enables remote participation by students, world-wide partners, model and forecasting technique developers.</br>
-
-<img src="screen/Screen-6.jpg"><br/>
-<img src="screen/Screen-7.jpg"><br/>
 
 POSTGRESSQL IS USED FOR RASPBERRY PI </br>
 SQL CREATION SCRIPTS ARE PORVIDED OR</br>
