@@ -91,7 +91,7 @@ namespace TeslaInstituteSpaceWeather.WPF
         // ------------------------------------------------------------------------------------------------------
 
         private Donki _donkiApi = new Donki();
-        private string NasaAPIKey = "M4nvoYZYeucBNHSV4HQkkdriP6kZ3KFr12mDH2F9";
+        private string NasaAPIKey = "YOUR NASA API KEY HERE";
         public List<CoronalMassEjection> cmeResults;
         public List<GeomagneticStorm> stormResults;
         public ObservableCollection<GridData> GridDataCollection = new ObservableCollection<GridData>();
