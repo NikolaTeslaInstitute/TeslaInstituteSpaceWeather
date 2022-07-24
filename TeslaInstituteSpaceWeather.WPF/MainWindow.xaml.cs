@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Reflection;
+using System.ComponentModel;
+using System.Threading;
+using System.Globalization;
 
 using Esri.ArcGISRuntime.Symbology;
 using Esri.ArcGISRuntime.Data;
@@ -37,23 +45,20 @@ using GeoPoint = GeoAPI.Geometries.Coordinate;
 using GeoAPI.Geometries;
 using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Collections.ObjectModel;
 
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using OxyPlot.Wpf;
+
 using NpgsqlTypes;
 using Npgsql;
-using System.Data;
-using System.Reflection;
-using System.ComponentModel;
-using System.Threading;
-using System.Globalization;
-using OxyPlot.Wpf;
+
+using Newtonsoft.Json;
+
+using NASABot.Api.Nasa;
+using NASABot.Api.Model;
+using Path = System.IO.Path;
 
 namespace TeslaInstituteSpaceWeather.WPF
 {
@@ -67,6 +72,7 @@ namespace TeslaInstituteSpaceWeather.WPF
 
         private readonly Esri.ArcGISRuntime.Geometry.Envelope _usEnvelope =
             new Esri.ArcGISRuntime.Geometry.Envelope(-144.619561355187, 18.0328662832097, -66.0903762761083, 67.6390975806745, SpatialReferences.Wgs84);
+        public string _esriApiKey = "YOU ESRI DEVELOPER API KEY HERE";
 
         Esri.ArcGISRuntime.Data.FeatureCollection features = new Esri.ArcGISRuntime.Data.FeatureCollection();
 
@@ -78,8 +84,42 @@ namespace TeslaInstituteSpaceWeather.WPF
 
         // ------------------------------------------------------------------------------------------------------
         
-        string jsonpath = @"d:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\json\";
-        string graphPath = @"d:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\graph\";
+        string jsonpath = @"c:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\json\";
+        string graphPath = @"c:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\graph\";
+        string csvPath = @"c:\TeslaInstituteSimulation\TeslaInstituteSpaceWeather\csv\";
+
+        // ------------------------------------------------------------------------------------------------------
+
+        private Donki _donkiApi = new Donki();
+        private string NasaAPIKey = "M4nvoYZYeucBNHSV4HQkkdriP6kZ3KFr12mDH2F9";
+        public List<CoronalMassEjection> cmeResults;
+        public List<GeomagneticStorm> stormResults;
+        public ObservableCollection<GridData> GridDataCollection = new ObservableCollection<GridData>();
+        Thread loadDonkiThread;
+
+        private DateTime _startDate;
+        public DateTime startDate
+        {
+            get { return _startDate; }
+            set { _startDate = value; }
+        }
+
+        private DateTime _endDate;
+        public DateTime endDate
+        {
+            get { return _endDate; }
+            set { _endDate = value; }
+        }
+
+        public class GridData
+        {
+            public string ActivityId { get; set; }
+            public string StartTime { get; set; }
+            public float Longitude { get; set; }
+            public float Latitude { get; set; }
+            public float Speed { get; set; }
+            public string Type { get; set; }
+        } // end class GridData
 
         // ------------------------------------------------------------------------------------------------------
 
@@ -87,7 +127,7 @@ namespace TeslaInstituteSpaceWeather.WPF
         {
             InitializeComponent();
 
-            Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = "YOUR ESRI DEVELOPER API KEY HERE";
+            Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = _esriApiKey;
 
             // Set up the basemap.
             MySceneView.Scene = new Scene(BasemapStyle.ArcGISImagery);
@@ -105,7 +145,164 @@ namespace TeslaInstituteSpaceWeather.WPF
             backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
             backgroundWorker.RunWorkerAsync("");
 
+            _endDate = DateTime.Now;
+            _startDate = DateTime.Today.AddMonths(-1);
+
+            string applicationDirectory = Directory.GetCurrentDirectory();
+            string infoFile = Path.Combine(applicationDirectory, "SWPC.html");
+            WebInfo.Navigate(new Uri("file:///"+ infoFile));
+
         } // end MainWindow
+
+        // ------------------------------------------------------------------------------------------------------
+
+        DataGridTextColumn dgc = new DataGridTextColumn();
+
+        public async void loadDonki()
+		{
+
+            log("DONKI API : Start Date " + _startDate);
+            log("DONKI API : End Date " + _endDate);
+
+            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                GridDataCollection.Clear()
+            )); // end invoke
+
+            DonkiData.Dispatcher.Invoke(() =>
+            {
+                DonkiData.Columns.Clear();
+                dgc = new DataGridTextColumn();
+                dgc.Header = "ID";
+                dgc.Binding = new Binding("ActivityId");
+                DonkiData.Columns.Add(dgc);
+                dgc = new DataGridTextColumn();
+                dgc.Header = "StartTime";
+                dgc.Binding = new Binding("StartTime");
+                DonkiData.Columns.Add(dgc);
+                dgc = new DataGridTextColumn();
+                dgc.Header = "Longitude";
+                dgc.Binding = new Binding("Longitude");
+                DonkiData.Columns.Add(dgc);
+                dgc = new DataGridTextColumn();
+                dgc.Header = "Latitude";
+                dgc.Binding = new Binding("Latitude");
+                DonkiData.Columns.Add(dgc);
+                dgc = new DataGridTextColumn();
+                dgc.Header = "Speed";
+                dgc.Binding = new Binding("Speed");
+                DonkiData.Columns.Add(dgc);
+                dgc = new DataGridTextColumn();
+                dgc.Header = "Type";
+                dgc.Binding = new Binding("Type");
+                DonkiData.Columns.Add(dgc);
+            }); // end invoke
+
+            try
+            {
+                cmeResults = await _donkiApi.GetCoronalMassEjection(NasaAPIKey, startDate, endDate);
+                if (cmeResults != null)
+                    log("DONKI API (CME) Number of results : " + cmeResults.Count);
+
+				if (cmeResults != null)
+				{
+					foreach (var item in cmeResults)
+					{
+                        GridData gd = new GridData();
+                        BotApiBox.Dispatcher.Invoke(() =>
+                        {
+                            BotApiBox.Text += ($"- Activity.ID: {item.ActivityId} ") + "\r\n";
+                            gd.ActivityId = item.ActivityId;
+                            BotApiBox.Text += ($"- Activity was at: {item.StartTime} ") + "\r\n";
+                            gd.StartTime = item.StartTime;
+                            if (item.CmeAnalyses != null)
+                            {
+                                foreach (var cmeanalysis in item.CmeAnalyses)
+                                {
+                                    if (cmeanalysis != null)
+                                    {
+                                        if (cmeanalysis.Longitude != null)
+                                        {
+                                            BotApiBox.Text += ($"- CmeAnalysis.Longitude: {cmeanalysis.Longitude} ") + "\r\n";
+                                            gd.Longitude = (float)cmeanalysis.Longitude;
+                                        }
+                                        else gd.Longitude = 0;
+                                        if (cmeanalysis.Longitude != null)
+                                        {
+                                            BotApiBox.Text += ($"- CmeAnalysis.Latitude: {cmeanalysis.Latitude} ") + "\r\n";
+                                            gd.Latitude = (float)cmeanalysis.Longitude;
+                                        }
+                                        else gd.Latitude = 0;
+                                        if (cmeanalysis.Longitude != null)
+                                        {
+                                            BotApiBox.Text += ($"- CmeAnalysis.Speed: {cmeanalysis.Speed} ") + "\r\n";
+                                            gd.Speed = (float)cmeanalysis.Speed;
+                                        }
+                                        else gd.Speed = 0;
+                                        if (cmeanalysis.Type != null)
+                                        {
+                                            BotApiBox.Text += ($"- CmeAnalysis.Type: {cmeanalysis.Type} ") + "\r\n";
+                                            gd.Type = cmeanalysis.Type;
+                                        }
+                                        gd.Type = "";
+                                    } // end if
+                                } // end foreach
+                            } // end if
+                            BotApiBox.Text += ($"- Note: {item.Note} ") + "\r\n";
+                            BotApiBox.Text += "----------------------------------------------------\r\n";
+
+                            GridDataCollection.Add(gd);
+                        }); // end invoke
+                    } // end foreach
+                } // end if
+
+                DonkiData.Dispatcher.Invoke(() =>
+                {
+                    DonkiData.ItemsSource = GridDataCollection;
+                });
+
+                stormResults = await _donkiApi.GetGeomagneticStorm(NasaAPIKey, startDate, endDate);
+                if (stormResults != null)
+                    log("DONKI API (GEOMAG) Number of results : " + stormResults.Count);
+
+                if (stormResults != null)
+                {
+                    foreach (var item in stormResults)
+                    {
+                        BotApiBox.Dispatcher.Invoke(() =>
+                        {
+                            BotApiBox.Text += ($"- Activity.ID: {item.GstId} ") + "\r\n";
+                            BotApiBox.Text += ($"- Activity was at: {item.StartTime} ") + "\r\n";
+                            if (item.AllKpIndex != null)
+                            {
+                                foreach (var kpi in item.AllKpIndex)
+                                {
+                                    BotApiBox.Text += ($"- KpIndex: {kpi.KpIndex} ") + "\r\n";
+                                    BotApiBox.Text += ($"- ObservedTime: {kpi.ObservedTime} ") + "\r\n";
+                                    BotApiBox.Text += ($"- Source: {kpi.Source} ") + "\r\n";
+                                }
+                            } // end if
+                            if (item.LinkedEvents != null)
+                            {
+                                foreach (var lev in item.LinkedEvents)
+                                {
+                                    BotApiBox.Text += "- LinkedEvents : ";
+                                    BotApiBox.Text += ($"{lev.ActivityId} ");
+                                    BotApiBox.Text += "\r\n";
+                                } // end foreach
+                            } // end if
+                            BotApiBox.Text += "----------------------------------------------------\r\n";
+                        }); // end invoke
+                    } // end foreach
+                } // end if
+
+            } catch (Exception err)
+			{
+                Console.WriteLine("Error : " + err.StackTrace);
+			} // end try
+
+        } // end initNasaBot
+
+        // ------------------------------------------------------------------------------------------------------
 
         public void alert(string line)
         {
@@ -374,30 +571,68 @@ namespace TeslaInstituteSpaceWeather.WPF
 
                 //Console.WriteLine("------------------------------------------------");
 
+                float KPPMAX = 0;
+                DateTime KPPMAXTIME = DateTime.Now;
+
                 foreach (PlanetaryKIndex pkindex in PlanetaryKIndexOutput)
                 {
                     //Console.WriteLine("TIME: " + pkindex.time_tag + " KP: " + pkindex.kp_index);
                     if (pkindex.kp_index > 2)
-                        alert("{" + pkindex.time_tag + "} KP=" + pkindex.kp_index);
+                    {
+                        //log("Datetime = {" + pkindex.time_tag + "} KP=" + pkindex.kp_index);
+                        if (pkindex.kp_index > KPPMAX)
+                        {
+                            KPPMAX = pkindex.kp_index;
+                            KPPMAXTIME = pkindex.time_tag;
+                        } // END IF
+                    } // end if
                 } // end foreach
 
+                if (KPPMAX > 0)
+                    alert("Datetime = {" + KPPMAXTIME + "} KP1h.EST.MAX=" + KPPMAX);
+
                 //Console.WriteLine("------------------------------------------------");
+
+                float DSTMIN = 600;
+                DateTime DSTMINTIME = DateTime.Now;
 
                 foreach (GeospaceDst dstindex in Dst1hOutput)
                 {
                     //Console.WriteLine("TIME: " + dstindex.time_tag + " KP: " + dstindex.dst);
                     if (dstindex.dst < -25)
-                        alert("{" + dstindex.time_tag + "} DST=" + dstindex.dst);
+                    {
+                        //log("Datetime = {" + dstindex.time_tag + "} DST=" + dstindex.dst);
+                        //log("Datetime = {" + pkindex.time_tag + "} KP=" + pkindex.kp_index);
+                        if (dstindex.dst < DSTMIN)
+                        {
+                            DSTMIN = dstindex.dst;
+                            DSTMINTIME = dstindex.time_tag;
+                        } // END IF
+                    } // end if
                 } // end foreach
+
+                if (DSTMIN != 600)
+                    alert("Datetime = {" + DSTMINTIME + "} MIN.DST=" + DSTMIN);
 
                 //Console.WriteLine("------------------------------------------------");
 
+                float KPMAX = 0;
+                DateTime KPMAXTIME = DateTime.Now;
                 foreach (KP1hEst kpestindex in PredEstKp1hOutput)
                 {
                     //Console.WriteLine("TIME: " + dstindex.time_tag + " KP: " + dstindex.dst);
-                    if (kpestindex.k > 2)
-                        alert("{" + kpestindex.model_prediction_time + "} KP.EST=" + kpestindex.k);
+                    if (kpestindex.k > 4)
+                    {
+                        if (kpestindex.k > KPMAX)
+                        {
+                            KPMAX = kpestindex.k;
+                            KPMAXTIME = kpestindex.model_prediction_time;
+                        } // END IF
+                    } // end if
                 } // end foreach
+
+                if (KPMAX > 0)
+                    alert("Datetime = {" + KPMAXTIME + "} KP.EST.MAX=" + KPMAX);
 
                 //e.Result = 1000;
             } // end while
@@ -1574,6 +1809,24 @@ namespace TeslaInstituteSpaceWeather.WPF
 
         } // end SaveMagGraph_Click
 
+		private void SaveDstCSV_Click(object sender, RoutedEventArgs e)
+		{
+            string filename = "DST_" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
+            string pathname = csvPath + filename + ".csv";
+            List<DataPoint> datapoints = lineSeriesDst.Points;
+            string csv = "";
+            foreach (DataPoint dp in datapoints)
+			{
+                csv += dp.X + ", " + dp.Y + "\r\n";
+			} // end foreach
+            File.WriteAllText(pathname, csv);
+        } // end SaveDstCSV_Click
+
+		private void loadDonkiButtonClick(object sender, RoutedEventArgs e)
+		{
+            loadDonkiThread = new Thread(new ThreadStart(loadDonki));
+            loadDonkiThread.Start();
+        }
 	} // end MainWindow
 
 } // end class

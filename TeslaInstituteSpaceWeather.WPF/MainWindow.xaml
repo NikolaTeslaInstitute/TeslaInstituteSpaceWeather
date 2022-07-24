@@ -73,8 +73,7 @@
                         Name="Ace" 
                         ItemsSource="{Binding PlotModelsAce}" 
                         HorizontalContentAlignment="Stretch" 
-                        VerticalContentAlignment="Stretch"
-                        Height="700">
+                        VerticalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
@@ -110,8 +109,7 @@
                         Name="Mag" 
                         ItemsSource="{Binding PlotModelsMag}" 
                         HorizontalContentAlignment="Stretch" 
-                        VerticalContentAlignment="Stretch"
-                        Height="700">
+                        VerticalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
@@ -145,8 +143,7 @@
                         <ItemsControl 
                         Name="Dst" 
                         ItemsSource="{Binding PlotModelsDst}" 
-                        HorizontalContentAlignment="Stretch"
-                        Height="700">
+                        HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
@@ -180,8 +177,7 @@
                         <ItemsControl 
                         Name="Kp" 
                         ItemsSource="{Binding PlotModelsKp}" 
-                        HorizontalContentAlignment="Stretch"
-                        Height="700">
+                        HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
@@ -213,10 +209,9 @@
                 <TabItem Header="HEMISPHERIC POWER">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                    Name="HP" 
-                    ItemsSource="{Binding PlotModelsHP}" 
-                    HorizontalContentAlignment="Stretch"
-                    Height="700">
+                        Name="HP" 
+                        ItemsSource="{Binding PlotModelsHP}" 
+                        HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
@@ -245,6 +240,55 @@
                         </ItemsControl>
                     </Grid>
                 </TabItem>
+                <TabItem Header="DONKI API">
+                    <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="123"></RowDefinition>
+                            <RowDefinition Height="267*"></RowDefinition>
+                            <RowDefinition Height="185*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" Grid.Column="0" 
+                            x:Name="BotApiBox" 
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True" 
+                            Margin="0,0,0,0" 
+                            TextWrapping="Wrap" 
+                            Text="" 
+                            VerticalAlignment="Top" 
+                            Height="120"
+                            VerticalScrollBarVisibility="Visible"/>
+                        <DataGrid 
+                            Name="DonkiData" 
+                            ItemsSource="{Binding Source=GridDataCollection}"
+                            Grid.Row="1" 
+                            Grid.Column="0" 
+                            HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Stretch"
+                            RowHeight="20"
+                            ColumnWidth="100" 
+                            AutoGenerateColumns="False"/>
+                        <StackPanel Grid.Row="2" Grid.Column="0" Height="170" VerticalAlignment="Bottom" >
+                            <Grid>
+                                <Calendar DisplayDate="{Binding startDate}"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                                <Calendar DisplayDate="{Binding endDate}" HorizontalAlignment="Left" Margin="194,0,0,0" VerticalAlignment="Top"/>
+                                <TextBlock HorizontalAlignment="Left" Margin="378,0,0,0" VerticalAlignment="Top"  TextWrapping="WrapWithOverflow">
+                                    The Space Weather Database Of Notifications, Knowledge, Information (DONKI), developed at the Community Coordinated Modeling Center (CCMC), is a comprehensive on-line tool for space weather forecasters, scientists, and the general space science community. DONKI provides:<LineBreak/>
+                                    Chronicles the daily interpretations of space weather observations, analysis, models output, and notifications.<LineBreak/>
+                                    Comprehensive knowledge-base search functionality to support anomaly resolution and space science research.<LineBreak/>
+                                    Intelligent linkages, relationships, cause-and-effects between space weather activities.<LineBreak/>
+                                    Comprehensive webservice API access to information stored in DONKI<LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="SWPC Info">
+                    <WebBrowser HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="WebInfo"/>
+                </TabItem>
             </TabControl>
             <StackPanel Grid.Row="0" Grid.Column="1"  DockPanel.Dock="Right" Width="200" VerticalAlignment="Stretch" Background="LightGray">
                 <Button Content="Refresh" Click="RefreshButtonClick"/>
@@ -255,6 +299,8 @@
                 <Button Content="Load HP from DB" Click="HPButtonClick"/>
                 <Button Content="Save Mag Graph" Click="SaveMagGraph_Click"/>
                 <Button Content="Save Dst Graph" Click="SaveDstGraph_Click"/>
+                <Button Content="Save Dst CSV" Click="SaveDstCSV_Click"/>
+                <Button x:Name="loadDonkiButton" Content="DONKI Request" Click="loadDonkiButtonClick"/>
             </StackPanel>
         </Grid>
     </DockPanel>

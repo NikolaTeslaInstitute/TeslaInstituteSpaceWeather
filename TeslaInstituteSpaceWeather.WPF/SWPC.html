@@ -1,0 +1,404 @@
+﻿<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Code</strong></td>
+            <td><strong>Product</strong></td>
+            <td><strong>WMO Code</strong></td>
+            <td><strong>NOAA Scale</strong></td>
+            <td><strong>Impacts</strong></td>
+        </tr>
+        <tr>
+            <td>ALTXMF</td>
+            <td>ALERT: X-ray Flux exceeded M5</td>
+            <td>WOXX01</td>
+            <td>R2</td>
+            <td>Loss of HF and degradation of low frequency navigation signals for tens of minutes.</td>
+        </tr>
+        <tr>
+            <td>SUMXM5</td>
+            <td>SUMMARY: X-Ray Event exceeded M5</td>
+            <td>WOXX01</td>
+            <td>R2</td>
+            <td>Loss of HF and degradation of low frequency navigation signals for tens of minutes.</td>
+        </tr>
+        <tr>
+            <td>SUMX01</td>
+            <td>SUMMARY: X-Ray Event exceeded X1</td>
+            <td>WOXX02</td>
+            <td>R3</td>
+            <td>Wide area loss of HF and low-frequency navigation signals for one hour.</td>
+        </tr>
+        <tr>
+            <td>SUMX10</td>
+            <td>SUMMARY: X-Ray Event exceeded X10</td>
+            <td>WOXX02</td>
+            <td>R4</td>
+            <td>Lost HF and outages of low-frequency navigation signals for one to two hours.</td>
+        </tr>
+        <tr>
+            <td>SUMX20</td>
+            <td>SUMMARY: X-Ray Event exceeded X20</td>
+            <td>WOXX02</td>
+            <td>R5</td>
+            <td>Complete HF blackouts and outages on low-frequency navigation signals for several hours.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Radio Burst Summaries</h2>
+<p>Radio burst summaries are issued for several enhancements that can be observed in conjunction with a solar magnetic eruption. The Type II Radio Emission, provided by the United States Air Force’s (USAF) Radio Solar Telescope Network (RSTN), are generally indicative of a coronal mass eruption (CME) accelerating through the outer atmosphere of the Sun. Type II observations preceded modern coronagraph imaging of CMEs but can still be useful to indicate the presence or lack of an associated CME. Significant uncertainties exist in determining exact CME velocities with this technique so any stated, observed velocities should be confirmed, when possible, with coronagraph imagery.</p>
+<p>The Type IV Radio Emission product is also provided by the USAF’s RSTN and this signature is often associated with significant solar eruptions. Like the Type II, any specifics of an eruption should be confirmed with coronagraph imagery.</p>
+<p>The 10cm Radio Burst product is issued when 10cm radio observations exceed 100% of the background solar radio noise at this frequency. This frequency also known as f10.7 is used as a proxy for solar input to the atmosphere, a primary driver for most ionospheric and atmospheric drag models.</p>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Code</strong></td>
+            <td><strong>Product</strong></td>
+            <td><strong>WMO Code</strong></td>
+            <td><strong>Description</strong></td>
+        </tr>
+        <tr>
+            <td>245MHz</td>
+            <td>SUMMARY: 245 MHz Radio Emission</td>
+            <td> </td>
+            <td>Daily summary of radio interference which can affect critical search and rescue frequencies.</td>
+        </tr>
+        <tr>
+            <td>ALTTP2</td>
+            <td>ALERT: Type II Radio Emission</td>
+            <td>WOXX04</td>
+            <td>Occur in loose association with major solar flares and are indicative of a shock wave moving through the solar atmosphere.</td>
+        </tr>
+        <tr>
+            <td>ALTTP4</td>
+            <td>ALERT: Type IV Radio Emission</td>
+            <td>WOXX04</td>
+            <td>Associated with some major solar flare events beginning 10 to 20 minutes after the flare maximum, and can last for hours.</td>
+        </tr>
+        <tr>
+            <td>SUM10R</td>
+            <td>SUMMARY: 10 cm Radio Burst</td>
+            <td>WOXX03</td>
+            <td>Proxy of solar EUV emission, important for satellite drag.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Geomagnetic Warnings, Alerts, and Watches</h2>
+<p>Because geomagnetic storming can be predicted with some lead time given the transit time of the driving coronal mass ejection (CME) or the predictability of the responsible solar wind feature, several time scales of products are produced. In general, geomagnetic storms impact the accuracy and availability of Global Positioning Systems, create induced currents on power grid elements and long-distance pipelines, and drive the aurora. See the NOAA Space Weather Scales for the general impacts associated with each storm level.</p>
+<p>A Geomagnetic Storm Watch is driven by the forecast of an impending geomagnetic storm and can cover the current day through the third day of the forecast period (or up to 72 hours lead time). The lead time is often largely determined by the velocity of the driving CME, with some of the historically fastest CMEs arriving well under a day (16-18 hour transits have been observed). A Watch carries a lower degree of confidence both in intensity and in timing than the Warning product but is useful for longer-range notification of an expected geomagnetic storm.</p>
+<p>A Geomagnetic Storm Warning is driven by upstream, in-situ solar wind observations. Geomagnetic Storm Warnings carry a higher degree of confidence in both timing and intensity but are generally only issued minutes to a couple of hours in advance. These products are generated by space weather forecasters who are evaluating the solar wind conditions affecting Earth. Given the limited number of severe to extreme geomagnetic storms and the limitations in predicting the exact evolution of a storm, a single Warning category exists for Kp &gt; or = 7 storming (or G3 or greater on the NOAA Geomagnetic Storm Scale). SWPC’s space weather forecasters do have the ability to supply additional comments in this warning product and may be able to indicate the specific level of intensity expected.</p>
+<p>A Geomagnetic Storm Alert is driven by ground-based magnetometer observations and is indicative of a specific storm threshold being reached. In other words, an Alert is a characterization of what is occurring now.</p>
+<p>A Geomagnetic Sudden Impulse (SI) Expected Warning is issued when a shock has been observed in the upstream, in situ solar wind data. Based on the post-shock velocity, space weather forecasters generate a warning period indicative of when this disturbance is expected at Earth. The Geomagnetic Sudden Impulse Summary product is issued when the shock is actually observed at Earth, as indicated by the response of ground-based magnetic observatories. These products are useful in that they can confirm the actual arrival of anticipated coronal mass ejection (CME).</p>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Code</strong></td>
+            <td><strong>Product</strong></td>
+            <td><strong>WMO Code</strong></td>
+            <td><strong>NOAA Scale</strong></td>
+            <td><strong>Impacts</strong></td>
+        </tr>
+        <tr>
+            <td>ATLK04</td>
+            <td>ALERT: Geomagnetic K-index of 4</td>
+            <td>WOXX13</td>
+            <td> </td>
+            <td>Minor system effects.</td>
+        </tr>
+        <tr>
+            <td>WARK04</td>
+            <td>WARNING: Geomagnetic K-index of 4 expected</td>
+            <td>WOXX13</td>
+            <td> </td>
+            <td>Minor system effects expected.</td>
+        </tr>
+        <tr>
+            <td>ALTK05</td>
+            <td>ALERT: Geomagnetic K-index of 5</td>
+            <td>WOXX11</td>
+            <td>G1</td>
+            <td>Weak power grid fluctuations, minor satellite operations impact.</td>
+        </tr>
+        <tr>
+            <td>WARK05</td>
+            <td>WARNING: Geomagnetic K-index of 5</td>
+            <td>WOXX11</td>
+            <td>G1</td>
+            <td>Weak power grid fluctuations, minor satellite operations impact.</td>
+        </tr>
+        <tr>
+            <td>ALTK06</td>
+            <td>ALERT: Geomagnetic K-index of 6</td>
+            <td>WOXX12</td>
+            <td>G2</td>
+            <td>High latitude power systems affected, satellite drag effect, high-latitude HF radio, high-latitude aurora.</td>
+        </tr>
+        <tr>
+            <td>WARK06</td>
+            <td>WARNING: Geomagnetic K-index of 6</td>
+            <td>WOXX12</td>
+            <td>G2</td>
+            <td>High latitude power systems affected, satellite drag effect, high-latitude HF radio, high-latitude aurora.</td>
+        </tr>
+        <tr>
+            <td>ALTK07</td>
+            <td>ALERT: Geomagnetic K-index of 7</td>
+            <td>WOXX14</td>
+            <td>G3</td>
+            <td>Power system voltage effects, satellite surface charging, HF radio, mid-latitude aurora.</td>
+        </tr>
+        <tr>
+            <td>WARK07</td>
+            <td>WARNING: Geomagnetic K-index of 7 or greater</td>
+            <td>WOXX14</td>
+            <td>G3</td>
+            <td>Power system voltage effects, satellite surface charging, HF radio, mid-latitude aurora.</td>
+        </tr>
+        <tr>
+            <td>ALTK08</td>
+            <td>ALERT: Geomagnetic K-index of 8</td>
+            <td>WOXX15</td>
+            <td>G4</td>
+            <td>Voltage problems, satellite surface charging, HF and low-frequency communication degraded, possible aurora near tropics.</td>
+        </tr>
+        <tr>
+            <td>ALTK09</td>
+            <td>ALERT: Geomagnetic K-index of 9</td>
+            <td>WOXX16</td>
+            <td>G5</td>
+            <td>Grid System can collapse, extensive satellite surface charging, extended degraded. HF communication and low-frequency navigation.</td>
+        </tr>
+        <tr>
+            <td>SUMSUD</td>
+            <td>SUMMARY: Geomagnetic Sudden Impulse</td>
+            <td>WOXX10</td>
+            <td> </td>
+            <td>Marks the possible beginning of a geomagnetic storm.</td>
+        </tr>
+        <tr>
+            <td>WARSUD</td>
+            <td>WARNING: Geomagnetic Sudden Impulse expected</td>
+            <td>WOXX10</td>
+            <td> </td>
+            <td>Marks the possible beginning of an expected geomagnetic storm.</td>
+        </tr>
+        <tr>
+            <td>WATA20</td>
+            <td>WATCH: Geomagnetic Storm Category G1 Predicted</td>
+            <td>WOXX20</td>
+            <td>G1</td>
+            <td>Minor system effects.</td>
+        </tr>
+        <tr>
+            <td>WATA30</td>
+            <td>WATCH: Geomagnetic Storm Category G2 Predicted</td>
+            <td>WOXX21</td>
+            <td>G2</td>
+            <td>Weak power grid fluctuations, minor satellite operation impact. Possible high-latitude power systems affected, satellite drag effect, high-latitude HF radio, high-latitude aurora.</td>
+        </tr>
+        <tr>
+            <td>WATA50</td>
+            <td>WATCH: Geomagnetic Storm Category G3 Predicted</td>
+            <td>WOXX22</td>
+            <td>G3</td>
+            <td>High-latitude power systems affected, satellite drag effect, high-latitude HF radio, high-latitude aurora. Possible voltage problems, satellite surface charging, HF and low-frequency communication degraded, possible aurora near tropics.</td>
+        </tr>
+        <tr>
+            <td>WATA99</td>
+            <td>WATCH: Geomagnetic Storm Category G4 or Greater Predicted</td>
+            <td>WOXX23</td>
+            <td>G4 or greater</td>
+            <td>Grid system can collapse, extensive satellite surface charging, extended degraded. HF communication and low-frequency navigation.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Electron Flux Alert</h2>
+<p>Electron Flux Alerts are issued when the geosynchronous energetic electron levels exceed the event threshold. Impacts associated with this phenomena are generally restricted to satellite deep dielectric charging so satellite owners and operators are the main customer of this product.</p>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Code</strong></td>
+            <td><strong>Product</strong></td>
+            <td><strong>WMO Code</strong></td>
+            <td><strong>Impacts</strong></td>
+        </tr>
+        <tr>
+            <td>ALTEF3</td>
+            <td>ALERT: Electron 2 MeV Integral Flux exceeded 1,000 pfu</td>
+            <td>WOXX30</td>
+            <td>Possible differential charging and bulk charging effects on satellites.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Proton Flux Warnings, Event Alerts, and Event Summaries</h2>
+<p>Proton Warnings, Alerts, and Summaries are issued for two different proton energies, 10MeV or greater and 100MeV or greater. The NOAA Solar Radiation Storm Scale (or S Scale) is driven by the 10MeV or greater measurement. In general, a &gt;10MeV event is representative of any increase in proton fluxes near Earth and a &gt;100MeV event is indicative of an energetic event in progress, meaning particles of higher energies are present in this enhancement. Given the wide range of impacts and phenomena associated with radiation storms, individual users with specific applications may need to consult individual measurements channels not covered by these summary products (impacts associated with radiation exposure at aviation altitudes is generally driven by particles with energies of 500MeV or greater, for example). See the NOAA Space Weather Scales for the general impacts associated with each storm level.</p>
+<p>Single Radiation Storm Warning products are issued for both &gt;10MeV and &gt;100MeV events. The &gt;10MeV Warning product will specify the NOAA Scale level of the warning in effect. There is only a single event threshold for the &gt;100MeV product so no additional information on intensity is included in that warning product. Warning times for proton events are generally on the 10’s of minutes to hours timescale. The amount of lead time possible is strongly influenced by how well-connected Earth is to the source region on the Sun. In some cases, well-connected events will exceed thresholds almost immediately, resulting in little to no warning lead time.</p>
+<p>Solar Radiation Alerts are issued when observed values at the NOAA GOES satellites exceed event thresholds. Alerts are issued for each NOAA Solar Radiation Storm Scale level, driven by the &gt;10MeV proton flux. A single Alert is issued for the &gt;100MeV proton flux.</p>
+<p>Solar Radiation Summaries are issued post-event and will indicate peak intensity as well as the particulars of start, peak, and end times for each storm level (e.g. the S2 Solar Radiation Storm Event Summary will be issued when storm levels have subsided below the S2 event threshold but generally before the S1 Radiation Storm has ended).</p>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Code</strong></td>
+            <td><strong>Product</strong></td>
+            <td><strong>WMO Code</strong></td>
+            <td><strong>NOAA Scale</strong></td>
+            <td><strong>Impacts</strong></td>
+        </tr>
+        <tr>
+            <td>ALTPX1</td>
+            <td>ALERT: Proton Event 10 MeV Integral Flux exceeded 10 pfu (S1)</td>
+            <td>WOXX32</td>
+            <td>S1</td>
+            <td>Minor impacts.</td>
+        </tr>
+        <tr>
+            <td>SUMPX1</td>
+            <td>SUMMARY: Proton Event 10 MeV Integral Flux exceeded 10 pfu (S1)</td>
+            <td>WOXX32</td>
+            <td>S1</td>
+            <td>Minor impacts.</td>
+        </tr>
+        <tr>
+            <td>WARPX1</td>
+            <td>WARNING: Proton 10 MeV Integral Flux above 10 pfu expected (S1 or Greater)</td>
+            <td>WOXX32</td>
+            <td>S1-S5</td>
+            <td>Minor impacts.</td>
+        </tr>
+        <tr>
+            <td>ALTPX2</td>
+            <td>ALERT: Proton Event 10 MeV Integral Flux exceeded 100 pfu (S2)</td>
+            <td>WOXX32</td>
+            <td>S2</td>
+            <td>Infrequent effects on HF through polar regions and satellite operations.</td>
+        </tr>
+        <tr>
+            <td>SUMPX2</td>
+            <td>SUMMARY: Proton Event 10 MeV Integral Flux exceeded 100 pfu (S2)</td>
+            <td>WOXX32</td>
+            <td>S2</td>
+            <td>Infrequent effects on HF through polar regions and satellite operations.</td>
+        </tr>
+        <tr>
+            <td>ALTPX3</td>
+            <td>ALERT: Proton Event 10 MeV Integral Flux exceeded 1,000 pfu (S3)</td>
+            <td>WOXX32</td>
+            <td>S3</td>
+            <td>Degraded HF at polar regions and navigation position errors, satellite effects on imaging systems and solar panel currents, significant radiation hazard to astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>SUMPX3</td>
+            <td>SUMMARY: Proton Event 10 MeV Integral Flux exceeded 1,000 pfu (S3)</td>
+            <td>WOXX32</td>
+            <td>S3</td>
+            <td>Degraded HF at polar regions and navigation position errors, satellite effects on imaging systems and solar panel currents, significant radiation hazard to astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>ALTPX4</td>
+            <td>ALERT: Proton Event 10 MeV Integral Flux exceeded 10,000 pfu (S4)</td>
+            <td>WOXX32</td>
+            <td>S4</td>
+            <td>Blackout of HF through the polar regions and navigation position errors over several days, satellite effects degraded imaging systems and memory device problems, high radiation risk to astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>SUMPX4</td>
+            <td>SUMMARY: Proton Event 10 MeV Integral Flux exceeded 10,000 pfu (S4)</td>
+            <td>WOXX32</td>
+            <td>S4</td>
+            <td>Blackout of HF through the polar regions and navigation position errors over several days, satellite effects degraded imaging systems and memory device problems, high radiation risk to astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>ALTPX5</td>
+            <td>ALERT: Proton Event 10 MeV Integral Flux exceeded 100,000 pfu (S5)</td>
+            <td>WOXX32</td>
+            <td>S5</td>
+            <td>No HF in the polar regions and position errors make navigation operations extremely difficult, loss of some satellites and memory impacts cause loss of control, unavoidable high radiation risk for astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>SUMPX5</td>
+            <td>SUMMARY: Proton Event 10 MeV Integral Flux exceeded 100,000 pfu (S5)</td>
+            <td>WOXX32</td>
+            <td>S5</td>
+            <td>No HF in the polar regions and position errors make navigation operations extremely difficult, loss of some satellites and memory impacts cause loss of control, unavoidable high radiation risk for astronauts on EVA and high-latitude aircraft passengers.</td>
+        </tr>
+        <tr>
+            <td>ALTPC0</td>
+            <td>ALERT: Proton Event 100 MeV Integral Flux exceeded 1 pfu</td>
+            <td>WOXX31</td>
+            <td> </td>
+            <td>Minor impacts on HF through polar regions and satellite operations.</td>
+        </tr>
+        <tr>
+            <td>SUMPC0</td>
+            <td>SUMMARY: Proton Event 100 MeV Integral Flux exceeded 1 pfu</td>
+            <td>WOXX31</td>
+            <td> </td>
+            <td>Minor impacts on HF through polar regions and satellite operations.</td>
+        </tr>
+        <tr>
+            <td>WARPC0</td>
+            <td>WARNING: Proton 100 MeV Integral Flux above 1 pfu expected</td>
+            <td>WOXX31</td>
+            <td> </td>
+            <td>Possible minor impacts on HF through polar regions and satellite operations.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Forecasts and Summaries</h2>
+<p>The forecast and summary products listed below are produced by SWPC on a regular schedule. The Forecast Discussion and NOAA 3-Day forecast are issued twice per day and are designed to supersede the Report of Solar Geophysical Activity (RSGA). The Solar &amp; Geophysical Activity Summary (SGAS) and Solar Region Summary (SRS) are issued daily and provide a retrospective description of phenomena observed during the UT day just passed. See the table, below for more details about these products.</p>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Product</strong></td>
+            <td><strong>Description</strong></td>
+        </tr>
+        <tr>
+            <td>Geophysical Alert Message (WWV)</td>
+            <td>Issued every 3 hours (at 0000, 0300, 0600, 0900, 1200, 1500, 1800, and 2100 UTC). Updates are more frequent when activity warrants. Provides information about the current and predicted solar terrestrial conditions.</td>
+        </tr>
+        <tr>
+            <td>NOAA 3-Day Forecast</td>
+            <td>Plain language 3-day forecast product. Issued twice per day.</td>
+        </tr>
+        <tr>
+            <td>Forecast Discussion</td>
+            <td>A free form, technical forecast discussion that details observed data, analysis, and forecast rationale. Issued twice per day.</td>
+        </tr>
+        <tr>
+            <td>NOAA Geomagnetic Forecast</td>
+            <td>Provides NOAA estimated Ap index for the previous UT day, NOAA forecast Ap for the current day and next 3 days. Also includes the planetary geomagnetic activity probabilities for the next 3 days and the NOAA Kp forecast for the next 3 days.</td>
+        </tr>
+        <tr>
+            <td>Solar Region Summary (SRS)</td>
+            <td>A daily report compiled by SWPC about the active solar regions observed during the preceding day. It contains a detailed description of the active regions currently visible on the solar disk.</td>
+        </tr>
+        <tr>
+            <td>Solar &amp; Geophysical Activity Summary (SGAS)</td>
+            <td>A daily brief list of solar and geophysical events for the previous UTC day.</td>
+        </tr>
+        <tr>
+            <td>Geoalert</td>
+            <td>A coded message containing a summary of solar-geophysical activity and selected indices for the previous day. It is a consensus of the advice received from as many as eleven Regional Warning Centers (RWCs) of the International Space Environment Service (ISES).</td>
+        </tr>
+        <tr>
+            <td>Preliminary Report and Forecast of Solar Geophysical Data (The Weekly)</td>
+            <td>Space Weather highlights from the previous week and an outlook for the next 27 days. It also includes tables and plots, data, activity, and reports. Note: Email notification will be sent when the latest version is posted to our web site.</td>
+        </tr>
+        <tr>
+            <td>Deprecated - Report of Solar Geophysical Activity (RSGA)</td>
+            <td>The primary daily report prepared by SWPC. It provides a summary and analysis of solar and geomagnetic activity during the previous 24 hours, the most recent solar indices, and a forecast of activity and indices for the next 3 days.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Advisories</h2>
+<table border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+        <tr>
+            <td><strong>Product</strong></td>
+            <td><strong>Description</strong></td>
+        </tr>
+        <tr>
+            <td>Space Weather Outlook</td>
+            <td>Issued Tuesdays, general descriptions of conditions during the past week and an outlook for the next 7 days.</td>
+        </tr>
+    </tbody>
+</table>
