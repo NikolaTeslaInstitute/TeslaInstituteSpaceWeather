@@ -1,4 +1,4 @@
-﻿<Window x:Class="TeslaInstituteSpaceWeather.WPF.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TeslaInstituteSpaceWeather.WPF"
         xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013" 
         xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="TeslaInstituteSpaceWeather.WPF.MainWindow"
         mc:Ignorable="d"
         Title="Tesla Petrovic Foundation - Space Weather" Height="920" Width="960">
     <Window.Resources>
@@ -35,13 +36,13 @@
             DockPanel.Dock="Top"
             BorderBrush="{StaticResource myColorfulBorderBrush}"
             BorderThickness="0">
-            <TextBox Name="LogBox" Height="80" VerticalScrollBarVisibility="Visible"/>
             <Border.BitmapEffect>
                 <EmbossBitmapEffect  />
             </Border.BitmapEffect>
+            <TextBox x:Name="LogBox" Height="80" VerticalScrollBarVisibility="Visible"/>
         </Border>
         <TextBox 
-            Name="AlertBox" 
+            x:Name="AlertBox" 
             DockPanel.Dock="Bottom" 
             HorizontalAlignment="Stretch" 
             Height="120" 
@@ -49,11 +50,11 @@
         <StatusBar DockPanel.Dock="Bottom" Height="50" Margin="0,0,0,0" HorizontalAlignment="Stretch"/>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <TabControl 
                 Grid.Row="0" 
@@ -70,19 +71,19 @@
                 <TabItem Header="ACE REAL-TIME SOLAR WIND">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                        Name="Ace" 
+                        x:Name="Ace" 
                         ItemsSource="{Binding PlotModelsAce}" 
                         HorizontalContentAlignment="Stretch" 
                         VerticalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                            Padding="{TemplateBinding Control.Padding}"
+                                            Padding="{TemplateBinding Padding}"
                                             BorderBrush="{TemplateBinding Border.BorderBrush}"
                                             Background="{TemplateBinding Panel.Background}"
                                             SnapsToDevicePixels="True">
-                                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
@@ -90,7 +91,7 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True" />
+                                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" IsItemsHost="True" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -106,19 +107,19 @@
                 <TabItem Header="MAGNETOMETERS 7 DAY">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                        Name="Mag" 
+                        x:Name="Mag" 
                         ItemsSource="{Binding PlotModelsMag}" 
                         HorizontalContentAlignment="Stretch" 
                         VerticalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                            Padding="{TemplateBinding Control.Padding}"
+                                            Padding="{TemplateBinding Padding}"
                                             BorderBrush="{TemplateBinding Border.BorderBrush}"
                                             Background="{TemplateBinding Panel.Background}"
                                             SnapsToDevicePixels="True">
-                                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
@@ -126,7 +127,7 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True" />
+                                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" IsItemsHost="True" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -141,18 +142,18 @@
                 <TabItem Header="DST 7 DAY">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                        Name="Dst" 
+                        x:Name="Dst" 
                         ItemsSource="{Binding PlotModelsDst}" 
                         HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                            Padding="{TemplateBinding Control.Padding}"
+                                            Padding="{TemplateBinding Padding}"
                                             BorderBrush="{TemplateBinding Border.BorderBrush}"
                                             Background="{TemplateBinding Panel.Background}"
                                             SnapsToDevicePixels="True">
-                                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
@@ -160,7 +161,7 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True" />
+                                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" IsItemsHost="True" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -175,18 +176,18 @@
                 <TabItem Header="KP EST 7 DAY">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                        Name="Kp" 
+                        x:Name="Kp" 
                         ItemsSource="{Binding PlotModelsKp}" 
                         HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                            Padding="{TemplateBinding Control.Padding}"
+                                            Padding="{TemplateBinding Padding}"
                                             BorderBrush="{TemplateBinding Border.BorderBrush}"
                                             Background="{TemplateBinding Panel.Background}"
                                             SnapsToDevicePixels="True">
-                                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
@@ -194,7 +195,7 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True" />
+                                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" IsItemsHost="True" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -209,18 +210,18 @@
                 <TabItem Header="HEMISPHERIC POWER">
                     <Grid Background="#FFE5E5E5">
                         <ItemsControl 
-                        Name="HP" 
+                        x:Name="HP" 
                         ItemsSource="{Binding PlotModelsHP}" 
                         HorizontalContentAlignment="Stretch">
                             <ItemsControl.Template>
                                 <ControlTemplate>
                                     <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
-                                        Padding="{TemplateBinding Control.Padding}"
+                                        Padding="{TemplateBinding Padding}"
                                         BorderBrush="{TemplateBinding Border.BorderBrush}"
                                         Background="{TemplateBinding Panel.Background}"
                                         SnapsToDevicePixels="True">
-                                        <ScrollViewer Padding="{TemplateBinding Control.Padding}" Focusable="False">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
+                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
                                     </Border>
                                 </ControlTemplate>
@@ -228,7 +229,7 @@
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True" />
+                                    <VirtualizingStackPanel VirtualizingPanel.IsVirtualizing="True" IsItemsHost="True" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -243,12 +244,12 @@
                 <TabItem Header="DONKI API">
                     <Grid Background="#FFE5E5E5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="123"></RowDefinition>
-                            <RowDefinition Height="267*"></RowDefinition>
-                            <RowDefinition Height="185*"></RowDefinition>
+                            <RowDefinition Height="123"/>
+                            <RowDefinition Height="267*"/>
+                            <RowDefinition Height="185*"/>
                         </Grid.RowDefinitions>
                         <TextBox Grid.Row="0" Grid.Column="0" 
                             x:Name="BotApiBox" 
@@ -261,7 +262,7 @@
                             Height="120"
                             VerticalScrollBarVisibility="Visible"/>
                         <DataGrid 
-                            Name="DonkiData" 
+                            x:Name="DonkiData" 
                             ItemsSource="{Binding Source=GridDataCollection}"
                             Grid.Row="1" 
                             Grid.Column="0" 
@@ -274,20 +275,14 @@
                             <Grid>
                                 <Calendar DisplayDate="{Binding startDate}"  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
                                 <Calendar DisplayDate="{Binding endDate}" HorizontalAlignment="Left" Margin="194,0,0,0" VerticalAlignment="Top"/>
-                                <TextBlock HorizontalAlignment="Left" Margin="378,0,0,0" VerticalAlignment="Top"  TextWrapping="WrapWithOverflow">
-                                    The Space Weather Database Of Notifications, Knowledge, Information (DONKI), developed at the Community Coordinated Modeling Center (CCMC), is a comprehensive on-line tool for space weather forecasters, scientists, and the general space science community. DONKI provides:<LineBreak/>
-                                    Chronicles the daily interpretations of space weather observations, analysis, models output, and notifications.<LineBreak/>
-                                    Comprehensive knowledge-base search functionality to support anomaly resolution and space science research.<LineBreak/>
-                                    Intelligent linkages, relationships, cause-and-effects between space weather activities.<LineBreak/>
-                                    Comprehensive webservice API access to information stored in DONKI<LineBreak/>
-                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="378,0,0,0" VerticalAlignment="Top"  TextWrapping="WrapWithOverflow"><Run Text="The Space Weather Database Of Notifications, Knowledge, Information (DONKI), developed at the Community Coordinated Modeling Center (CCMC), is a comprehensive on-line tool for space weather forecasters, scientists, and the general space science community. DONKI provides:"/><LineBreak/><Run Text="Chronicles the daily interpretations of space weather observations, analysis, models output, and notifications."/><LineBreak/><Run Text="Comprehensive knowledge-base search functionality to support anomaly resolution and space science research."/><LineBreak/><Run Text="Intelligent linkages, relationships, cause-and-effects between space weather activities."/><LineBreak/><Run Text="Comprehensive webservice API access to information stored in DONKI"/><LineBreak/></TextBlock>
                             </Grid>
                         </StackPanel>
 
                     </Grid>
                 </TabItem>
                 <TabItem Header="SWPC Info">
-                    <WebBrowser HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="WebInfo"/>
+                    <WebBrowser HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="WebInfo"/>
                 </TabItem>
             </TabControl>
             <StackPanel Grid.Row="0" Grid.Column="1"  DockPanel.Dock="Right" Width="200" VerticalAlignment="Stretch" Background="LightGray">
@@ -301,6 +296,10 @@
                 <Button Content="Save Dst Graph" Click="SaveDstGraph_Click"/>
                 <Button Content="Save Dst CSV" Click="SaveDstCSV_Click"/>
                 <Button x:Name="loadDonkiButton" Content="DONKI Request" Click="loadDonkiButtonClick"/>
+                <ComboBox Name="DonkiService" SelectedIndex="1">
+                    <ComboBoxItem Content="Coronal Mass Ejection (CME)"/>
+                    <ComboBoxItem Content="Geomagnetic Storm (GST)"/>
+                </ComboBox>
             </StackPanel>
         </Grid>
     </DockPanel>

@@ -72,7 +72,7 @@ namespace TeslaInstituteSpaceWeather.WPF
 
         private readonly Esri.ArcGISRuntime.Geometry.Envelope _usEnvelope =
             new Esri.ArcGISRuntime.Geometry.Envelope(-144.619561355187, 18.0328662832097, -66.0903762761083, 67.6390975806745, SpatialReferences.Wgs84);
-        public string _esriApiKey = "YOU ESRI DEVELOPER API KEY HERE";
+        public string _esriApiKey = "YOUR ESRI DEVELOPER API KEY HERE";
 
         Esri.ArcGISRuntime.Data.FeatureCollection features = new Esri.ArcGISRuntime.Data.FeatureCollection();
 
@@ -119,6 +119,12 @@ namespace TeslaInstituteSpaceWeather.WPF
             public float Latitude { get; set; }
             public float Speed { get; set; }
             public string Type { get; set; }
+            //public string Link { get; set; }
+
+            public float KpIndex { get; set; }
+            public string ObservedTime { get; set; }
+            public string Source { get; set; }
+
         } // end class GridData
 
         // ------------------------------------------------------------------------------------------------------
@@ -159,7 +165,7 @@ namespace TeslaInstituteSpaceWeather.WPF
         DataGridTextColumn dgc = new DataGridTextColumn();
 
         public async void loadDonki()
-		{
+        {
 
             log("DONKI API : Start Date " + _startDate);
             log("DONKI API : End Date " + _endDate);
@@ -168,42 +174,82 @@ namespace TeslaInstituteSpaceWeather.WPF
                 GridDataCollection.Clear()
             )); // end invoke
 
-            DonkiData.Dispatcher.Invoke(() =>
+            int selectedDonkiService = 1;
+
+            DonkiService.Dispatcher.Invoke(() =>
             {
-                DonkiData.Columns.Clear();
-                dgc = new DataGridTextColumn();
-                dgc.Header = "ID";
-                dgc.Binding = new Binding("ActivityId");
-                DonkiData.Columns.Add(dgc);
-                dgc = new DataGridTextColumn();
-                dgc.Header = "StartTime";
-                dgc.Binding = new Binding("StartTime");
-                DonkiData.Columns.Add(dgc);
-                dgc = new DataGridTextColumn();
-                dgc.Header = "Longitude";
-                dgc.Binding = new Binding("Longitude");
-                DonkiData.Columns.Add(dgc);
-                dgc = new DataGridTextColumn();
-                dgc.Header = "Latitude";
-                dgc.Binding = new Binding("Latitude");
-                DonkiData.Columns.Add(dgc);
-                dgc = new DataGridTextColumn();
-                dgc.Header = "Speed";
-                dgc.Binding = new Binding("Speed");
-                DonkiData.Columns.Add(dgc);
-                dgc = new DataGridTextColumn();
-                dgc.Header = "Type";
-                dgc.Binding = new Binding("Type");
-                DonkiData.Columns.Add(dgc);
+                selectedDonkiService = DonkiService.SelectedIndex;
+                if (selectedDonkiService == 0) { 
+                    DonkiData.Dispatcher.Invoke(() =>
+                    {
+                        DonkiData.Columns.Clear();
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "ID";
+                        dgc.Binding = new Binding("ActivityId");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "StartTime";
+                        dgc.Binding = new Binding("StartTime");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Longitude";
+                        dgc.Binding = new Binding("Longitude");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Latitude";
+                        dgc.Binding = new Binding("Latitude");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Speed";
+                        dgc.Binding = new Binding("Speed");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Type";
+                        dgc.Binding = new Binding("Type");
+                        DonkiData.Columns.Add(dgc);
+                    }); // end invoke
+                } // end if
+
+                if (selectedDonkiService == 1)
+                {
+                    DonkiData.Dispatcher.Invoke(() =>
+                    {
+                        DonkiData.Columns.Clear();
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "ID";
+                        dgc.Binding = new Binding("ActivityId");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "StartTime";
+                        dgc.Binding = new Binding("StartTime");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Kp Index";
+                        dgc.Binding = new Binding("KpIndex");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Observed Time";
+                        dgc.Binding = new Binding("ObservedTime");
+                        DonkiData.Columns.Add(dgc);
+                        dgc = new DataGridTextColumn();
+                        dgc.Header = "Source";
+                        dgc.Binding = new Binding("Source");
+                        DonkiData.Columns.Add(dgc);
+                    }); // end invoke
+                } // end if
+
             }); // end invoke
 
+            if (selectedDonkiService == 0)
             try
             {
                 cmeResults = await _donkiApi.GetCoronalMassEjection(NasaAPIKey, startDate, endDate);
                 if (cmeResults != null)
                     log("DONKI API (CME) Number of results : " + cmeResults.Count);
+                else
+                    log("DONKI API (CME) Number of results : 0");
 
-				if (cmeResults != null)
+                    if (cmeResults != null)
 				{
 					foreach (var item in cmeResults)
 					{
@@ -260,25 +306,44 @@ namespace TeslaInstituteSpaceWeather.WPF
                     DonkiData.ItemsSource = GridDataCollection;
                 });
 
+            } catch (Exception err)
+			{
+                Console.WriteLine("Error : " + err.StackTrace);
+			} // end try
+
+            // ----------------------------------------------------------------------------------------------------------------
+
+            if (selectedDonkiService == 1)
+            try
+			{
+
                 stormResults = await _donkiApi.GetGeomagneticStorm(NasaAPIKey, startDate, endDate);
                 if (stormResults != null)
                     log("DONKI API (GEOMAG) Number of results : " + stormResults.Count);
+                else
+                    log("DONKI API (CME) Number of results : 0");
 
                 if (stormResults != null)
                 {
                     foreach (var item in stormResults)
                     {
+                        GridData gd = new GridData();
                         BotApiBox.Dispatcher.Invoke(() =>
                         {
                             BotApiBox.Text += ($"- Activity.ID: {item.GstId} ") + "\r\n";
+                            gd.ActivityId = item.GstId;
                             BotApiBox.Text += ($"- Activity was at: {item.StartTime} ") + "\r\n";
+                            gd.StartTime = item.StartTime;
                             if (item.AllKpIndex != null)
                             {
                                 foreach (var kpi in item.AllKpIndex)
                                 {
                                     BotApiBox.Text += ($"- KpIndex: {kpi.KpIndex} ") + "\r\n";
+                                    gd.KpIndex = kpi.KpIndex;
                                     BotApiBox.Text += ($"- ObservedTime: {kpi.ObservedTime} ") + "\r\n";
+                                    gd.ObservedTime = kpi.ObservedTime;
                                     BotApiBox.Text += ($"- Source: {kpi.Source} ") + "\r\n";
+                                    gd.Source = kpi.Source;
                                 }
                             } // end if
                             if (item.LinkedEvents != null)
@@ -291,14 +356,21 @@ namespace TeslaInstituteSpaceWeather.WPF
                                 } // end foreach
                             } // end if
                             BotApiBox.Text += "----------------------------------------------------\r\n";
+
+                            GridDataCollection.Add(gd);
                         }); // end invoke
                     } // end foreach
                 } // end if
 
+                DonkiData.Dispatcher.Invoke(() =>
+                {
+                    DonkiData.ItemsSource = GridDataCollection;
+                });
+
             } catch (Exception err)
 			{
                 Console.WriteLine("Error : " + err.StackTrace);
-			} // end try
+            } // end try
 
         } // end initNasaBot
 
